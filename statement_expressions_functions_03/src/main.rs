@@ -21,7 +21,8 @@ fn main() {
 
     // 加上分号就成了语句，不会返回2 * b的值，隐式返回语句的值 ‘()’
     let d = {
-        b + 2;
+        //  b + 2;
+        let _ = b + 2;
     };
 
     println!("b is {:?}", b);
@@ -34,11 +35,24 @@ fn main() {
 
     // 发散函数(diverge function) 当用 ‘!’作为返回值时，就表示为发散函数，一般用于导致程序崩溃的函数
     // dead_end()
+
+    let (x, y) = (1, 2);
+    let s = sum(x, y);
+
+    assert_eq!(s, 3);
+    print()
 }
 
-fn dead_end() -> ! {
-    panic!("panic")
+fn print() -> () {
+    println!("hello,world");
 }
+
+fn sum(x: i32, y: i32) -> i32 {
+    x + y
+}
+// fn dead_end() -> ! {
+//     panic!("panic")
+// }
 fn add_with_extra(x: i32, y: i32) -> i32 {
     let x = x + 1; // 语句
     let y = y + 3; // 语句
